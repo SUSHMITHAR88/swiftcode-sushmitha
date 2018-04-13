@@ -16,6 +16,8 @@ import views.html.login;
 import javax.inject.Inject;
 import java.util.Objects;
 
-public class HomeController extends Controller {
-
+public class HomeController extends Controller{
+   public Result chat() {
+      return ok("hello world");
+   }
 }
