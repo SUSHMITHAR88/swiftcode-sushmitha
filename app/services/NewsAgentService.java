@@ -37,6 +37,7 @@ public class NewsAgentService {
             e.printStackTrace();
 
         }
+        return newsAgentResponse;
 
     }
 
