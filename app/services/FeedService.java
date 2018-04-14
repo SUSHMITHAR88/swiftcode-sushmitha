@@ -22,9 +22,9 @@ public class FeedService {
             .get();
             Document feedresponse =responsePromise.thenApply(WSResponse::asXml).toCompletableFuture().get();
             Node item = feedresponse.getFirstChild().getChildNodes().item(10);
-            feedresponseobj.title=item.getChildNodes().item(0).getNodeValue();
-            feedresponseobj.pubdate=item.getChildNodes().item(3).getNodeValue();
-            feedresponseobj.description=item.getChildNodes().item(4).getNodeValue();
+            feedresponseObj.title=item.getChildNodes().item(0).getNodeValue();
+            feedresponseObj.pubdate=item.getChildNodes().item(3).getNodeValue();
+            feedresponseObj.description=item.getChildNodes().item(4).getNodeValue();
         }
         catch(Exception e){
             e.printStackTrace();
