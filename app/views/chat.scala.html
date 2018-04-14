@@ -9,8 +9,13 @@
 </head>
 
 <body ng-app="chatApp" ng-controller="chatController" layout="row" layout-align="center strecth">
-    <md-card layout="column" flex style="max-width:800px">
-        <md-content id="message-pane" layout="coloumn" flex="90">
+    <md-card layout="column" flex="none" style="width:800px">
+        <md-content id="message-pane" layout="column" flex="90">
+            <div ng-repeat="msg in messages">
+                <md-card class="message-card" ng-style="msg.sender=='BOT'?{'background-color':'#d1d11d'}:{'background-color':'#bc091b'}">
+                    <span>{{msg.text}}</span>
+                </md-card>
+            </div>
         </md-content>
         <md-card id="form-card" layout="coloumn" flex="10" class="md-whiteframe-16dp">
             <form layout="row" flex="90">
@@ -19,9 +24,8 @@
                     <input ng-mode="usermessage"></input>
                 </md-input-container>
             </form>
-            <md-button layout-align="center" flex class="md-fab md-accept">
+            <md-button class="md-fab md-accent" flex="none" layout="row" layout-align="center center">
                 <i class="material-icons">send</i>
-            </md-button>
             </md-button>
         </md-card>
     </md-card>
