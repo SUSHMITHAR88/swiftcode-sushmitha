@@ -56,6 +56,7 @@ public class MessageActor extends UntypedActor {
     }
 
     private FeedResponse feedResponse() {
+        return feedResponse();
     }
 
 
