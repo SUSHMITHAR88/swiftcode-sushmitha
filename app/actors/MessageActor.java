@@ -28,7 +28,6 @@ public class MessageActor extends UntypedActor {
     public FeedService feedservice = new FeedService();
     public NewsAgentService newsAgentService = new NewsAgentService();
     public NewsAgentResponse newsAgentResponse = new NewsAgentResponse();
-    private FeedResponse feedResponse = new FeedResponse();
 
 
     //object of newsAgentService
@@ -43,10 +42,10 @@ public class MessageActor extends UntypedActor {
             messageObject.sender = Message.Sender.USER;
             out.tell(objectMapper.writeValueAsString(messageObject), self());
             //newsAgentService.getNewsAgentResponse(messageObject.text,UUID.randomUUID());
-            String query = newsAgentService.getNewsAgentResponse("Find " + message, UUID.randomUUID()).query;
-            FeedResponse feedresponse = feedservice.getFeedByQuery(newsAgentResponse.query);
-            messageObject.text = (feedResponse.title == null) ? "No results found" : "Showing results for: " + newsAgentResponse.query;
-            messageObject.feedResponse = feedResponse();
+            String query = newsAgentService.getNewsAgentResponse("Find " + messageObject.text, UUID.randomUUID()).query;
+            FeedResponse feedresponse = feedservice.getFeedByQuery(query);
+            messageObject.text = (feedresponse.title == null) ? "No results found" : "Showing results for: " + newsAgentResponse.query;
+            messageObject.feedResponse = feedresponse;
             messageObject.sender = Message.Sender.BOT;
             out.tell(objectMapper.writeValueAsString(messageObject), self());
         }
@@ -55,9 +54,9 @@ public class MessageActor extends UntypedActor {
 
     }
 
-    private FeedResponse feedResponse() {
-        return feedResponse();
-    }
+    // private FeedResponse feedResponse() {
+    //     return feedResponse();
+    // }
 
 
 }

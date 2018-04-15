@@ -28,3 +28,10 @@ html body {
     padding: 10px;
     font-size: 14px;
 }
+
+.message-time {
+    margin-top: 4px;
+    float: right;
+    color: #0a0a0a;
+    font-size: 10px;
+}
